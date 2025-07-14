@@ -1,118 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Graphiluxe - Premium Design Resources</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphiluxe - Premium Design Resources</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #ffffff, #800000);
       color: #333;
-    }
+    }header {
+  text-align: center;
+  padding: 40px 20px 10px;
+  background-color: #2d2d2d;
+  color: white;
+}
 
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      background-color: #2d2d2d;
-      color: white;
-    }
+header h1 {
+  font-size: 36px;
+  margin: 0;
+}
 
-    header h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+header p {
+  font-size: 14px;
+  color: #ccc;
+}
 
-    header p {
-      font-size: 16px;
-      color: #ccc;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff0f0;
+}
 
-    .controls {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px;
-      background-color: #fff0f0;
-    }
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
 
-    .controls input, .controls select {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 30px;
-    }
+.nav-links a {
+  text-decoration: none;
+  color: #800000;
+}
 
-    .item {
-      background: #fff;
-      border-radius: 10px;
-      width: 260px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  background-color: #fff0f0;
+}
 
-    .item:hover {
-      transform: scale(1.05);
-    }
+.controls input, .controls select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
-    .item img {
-      width: 100%;
-      height: 180px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      object-fit: cover;
-    }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
 
-    .desc {
-      padding: 15px;
-      font-weight: bold;
-      font-size: 16px;
-      text-align: center;
-    }
+.item {
+  background: #fff;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
 
-    .download-btn {
-      display: block;
-      margin: 0 auto 15px auto;
-      padding: 8px 20px;
-      background-color: #800000;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 15px;
-    }
+.item:hover {
+  transform: scale(1.03);
+}
 
-    .download-btn:hover {
-      background-color: #a00000;
-    }
+.item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
 
-    footer {
-      background-color: #2d2d2d;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
+.desc {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.download-btn {
+  display: block;
+  margin: 0 auto 15px;
+  padding: 6px 14px;
+  background-color: #800000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.section-heading {
+  text-align: center;
+  padding: 30px 10px 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.popular-tags {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.popular-tags button {
+  background: #ffcccc;
+  border: none;
+  margin: 5px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #2d2d2d;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.auth-section {
+  max-width: 400px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.auth-section input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-section button {
+  background-color: #800000;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
   </style>
 </head>
-<body>
-
-<header>
+<body><nav>
+  <div class="logo">Pixelllsglorryyy</div>
+  <div class="nav-links">
+    <a href="#login">Login</a>
+    <a href="#signup">Sign Up</a>
+    <a href="#dashboard">Dashboard</a>
+  </div>
+</nav><header>
   <h1>Graphiluxe</h1>
   <p>Premium PNGs • Fonts • Vectors • Wallpapers</p>
-</header>
-
-<div class="controls">
+</header><div class="section-heading">Download Free Vectors, Stock Photos, Stock Videos, and More</div>
+<div class="popular-tags">
+  <button onclick="window.location.href='popular.html?tag=background'">Background</button>
+  <button onclick="window.location.href='popular.html?tag=summer'">Summer</button>
+  <button onclick="window.location.href='popular.html?tag=happy-birthday'">Happy Birthday</button>
+</div><div class="controls">
   <input type="text" id="searchInput" placeholder="Search...">
   <select id="categoryFilter">
     <option value="all">All Categories</option>
@@ -121,36 +193,29 @@
     <option value="font">Fonts</option>
     <option value="wallpaper">Wallpapers</option>
   </select>
-</div>
-
-<div class="gallery" id="gallery">
+</div><div class="gallery" id="gallery">
   <div class="item png">
-    <img src="https://i.imgur.com/klbN8dd.png" alt="Stylish PNG">
+    <img src="https://i.postimg.cc/nV5vQcLg/1000058918.jpg" alt="Stylish PNG">
     <div class="desc">Stylish PNG #1</div>
     <button class="download-btn" onclick="increment(this)">Download (<span>0</span>)</button>
   </div>
-  <div class="item vector">
-    <img src="https://i.imgur.com/GI0iTIf.jpg" alt="Vector Art">
-    <div class="desc">Vector Art #1</div>
-    <button class="download-btn" onclick="increment(this)">Download (<span>0</span>)</button>
-  </div>
-  <div class="item font">
-    <img src="https://i.imgur.com/l6GS8Ff.jpg" alt="Font Preview">
-    <div class="desc">Font Pack</div>
-    <button class="download-btn" onclick="increment(this)">Download (<span>0</span>)</button>
-  </div>
-  <div class="item wallpaper">
-    <img src="https://i.imgur.com/N4Q9K4N.jpg" alt="Wallpaper">
-    <div class="desc">4K Wallpaper</div>
-    <button class="download-btn" onclick="increment(this)">Download (<span>0</span>)</button>
-  </div>
-</div>
-
-<footer>
+</div><div id="login" class="auth-section">
+  <h3>Login</h3>
+  <input type="text" placeholder="Email">
+  <input type="password" placeholder="Password">
+  <button>Login</button>
+</div><div id="signup" class="auth-section">
+  <h3>Sign Up</h3>
+  <input type="text" placeholder="Full Name">
+  <input type="email" placeholder="Email">
+  <input type="password" placeholder="Password">
+  <button>Register</button>
+</div><div id="dashboard" class="auth-section">
+  <h3>User Dashboard</h3>
+  <p>Welcome to your dashboard. Here you can manage your downloads, favorites, and profile.</p>
+</div><footer>
   Contact: meshiv9359@gmail.com | Instagram: @kunal_raut_149
-</footer>
-
-<script>
+</footer><script>
   function increment(btn) {
     const span = btn.querySelector("span");
     span.textContent = parseInt(span.textContent) + 1;
@@ -169,7 +234,5 @@
       item.style.display = (category === "all" || item.classList.contains(category)) ? "" : "none";
     });
   });
-</script>
-
-</body>
+</script></body>
 </html>
