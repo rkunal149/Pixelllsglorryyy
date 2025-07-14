@@ -9,6 +9,47 @@
       background-color: #121212;
       color: white;
 
+.center-btn {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.glow-btn {
+  position: relative;
+  padding: 15px 35px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, #800000, #ff4b2b);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.glow-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  background: linear-gradient(45deg, #ff4b2b, #800000);
+}
+
+.stars {
+  display: none;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 24px;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.glow-btn:hover .stars {
+  display: block;
+  filter: drop-shadow(0 0 10px #fffdef);
+}
       .center-btn {
   text-align: center;
   margin: 40px 0;
