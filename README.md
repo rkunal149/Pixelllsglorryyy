@@ -1,238 +1,123 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graphiluxe - Premium Design Resources</title>
+  <title>Graphiluxe - Auth Dashboard</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffffff, #800000);
-      color: #333;
-    }header {
-  text-align: center;
-  padding: 40px 20px 10px;
-  background-color: #2d2d2d;
-  color: white;
+      background-color: #121212;
+      color: white;
+      padding: 20px;
+    }input, button {
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+  max-width: 300px;
 }
 
-header h1 {
-  font-size: 36px;
+button {
+  background-color: maroon;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background: #1e1e1e;
+  padding: 10px 20px;
+}
+
+.navbar h2 {
   margin: 0;
 }
 
-header p {
-  font-size: 14px;
-  color: #ccc;
+.navbar button {
+  background: none;
+  border: 1px solid white;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: #fff0f0;
-}
+  </style>  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
+    const firebaseConfig = {
+      apiKey: "AIzaSyCYl48BKBznp56rwGXRfYPK52Q3lZUbdw8",
+      authDomain: "glxhub-main.firebaseapp.com",
+      projectId: "glxhub-main",
+      storageBucket: "glxhub-main.firebasestorage.app",
+      messagingSenderId: "415822108868",
+      appId: "1:415822108868:web:8a20b0c03f6028a0111191"
+    };
 
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-.nav-links a {
-  text-decoration: none;
-  color: #800000;
-}
+    window.signup = () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => alert("Signup Success!"))
+        .catch(e => alert(e.message));
+    }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
-  background-color: #fff0f0;
-}
+    window.login = () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => location.href = "dashboard")
+        .catch(e => alert(e.message));
+    }
 
-.controls input, .controls select {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
+    window.logout = () => {
+      signOut(auth).then(() => location.href = "index")
+    }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
+    window.resetPassword = () => {
+      const email = document.getElementById("resetEmail").value;
+      sendPasswordResetEmail(auth, email)
+        .then(() => alert("Reset email sent!"))
+        .catch(e => alert(e.message));
+    }
 
-.item {
-  background: #fff;
-  border-radius: 10px;
-  width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.item:hover {
-  transform: scale(1.03);
-}
-
-.item img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-.desc {
-  padding: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.download-btn {
-  display: block;
-  margin: 0 auto 15px;
-  padding: 6px 14px;
-  background-color: #800000;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.section-heading {
-  text-align: center;
-  padding: 30px 10px 10px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.popular-tags {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.popular-tags button {
-  background: #ffcccc;
-  border: none;
-  margin: 5px;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-footer {
-  background-color: #2d2d2d;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
-
-.auth-section {
-  max-width: 400px;
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.auth-section input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.auth-section button {
-  background-color: #800000;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100%;
-  cursor: pointer;
-}
-
-  </style>
-</head>
-<body><nav>
-  <div class="logo">Pixelllsglorryyy</div>
-  <div class="nav-links">
-    <a href="#login">Login</a>
-    <a href="#signup">Sign Up</a>
-    <a href="#dashboard">Dashboard</a>
+    window.onload = () => {
+      const path = window.location.pathname;
+      if (path.includes("dashboard")) {
+        onAuthStateChanged(auth, user => {
+          if (!user) location.href = "index";
+          else {
+            document.getElementById("userInfo").innerText = "Welcome " + user.email;
+            document.getElementById("uid").innerText = user.uid;
+          }
+        });
+      }
+    }
+  </script></head>
+<body>
+  <div class="navbar">
+    <h2>Graphiluxe</h2>
+    <div>
+      <a href="dashboard">Dashboard</a> |
+      <a href="profile">Profile</a> |
+      <a href="reset">Reset Password</a> |
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>  <div id="main">
+    <h2>Login / Signup</h2>
+    <input id="emailInput" type="email" placeholder="Email">
+    <input id="passwordInput" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="signup()">Signup</button>
+  </div>  <div id="dashboard" style="display:none">
+    <h3 id="userInfo">Loading...</h3>
+    <p><strong>UID:</strong> <span id="uid"></span></p>
+  </div>  <div id="reset" style="display:none">
+    <h2>Reset Password</h2>
+    <input id="resetEmail" type="email" placeholder="Enter your email">
+    <button onclick="resetPassword()">Send Reset Email</button>
   </div>
-</nav><header>
-  <h1>Graphiluxe</h1>
-  <p>Premium PNGs • Fonts • Vectors • Wallpapers</p>
-</header><div class="section-heading">Download Free Vectors, Stock Photos, Stock Videos, and More</div>
-<div class="popular-tags">
-  <button onclick="window.location.href='popular.html?tag=background'">Background</button>
-  <button onclick="window.location.href='popular.html?tag=summer'">Summer</button>
-  <button onclick="window.location.href='popular.html?tag=happy-birthday'">Happy Birthday</button>
-</div><div class="controls">
-  <input type="text" id="searchInput" placeholder="Search...">
-  <select id="categoryFilter">
-    <option value="all">All Categories</option>
-    <option value="png">PNGs</option>
-    <option value="vector">Vectors</option>
-    <option value="font">Fonts</option>
-    <option value="wallpaper">Wallpapers</option>
-  </select>
-</div><div class="gallery" id="gallery">
-  <div class="item png">
-    <img src="https://i.postimg.cc/nV5vQcLg/1000058918.jpg" alt="Stylish PNG">
-    <div class="desc">Stylish PNG #1</div>
-    <button class="download-btn" onclick="increment(this)">Download (<span>0</span>)</button>
-  </div>
-</div><div id="login" class="auth-section">
-  <h3>Login</h3>
-  <input type="text" placeholder="Email">
-  <input type="password" placeholder="Password">
-  <button>Login</button>
-</div><div id="signup" class="auth-section">
-  <h3>Sign Up</h3>
-  <input type="text" placeholder="Full Name">
-  <input type="email" placeholder="Email">
-  <input type="password" placeholder="Password">
-  <button>Register</button>
-</div><div id="dashboard" class="auth-section">
-  <h3>User Dashboard</h3>
-  <p>Welcome to your dashboard. Here you can manage your downloads, favorites, and profile.</p>
-</div><footer>
-  Contact: meshiv9359@gmail.com | Instagram: @kunal_raut_149
-</footer><script>
-  function increment(btn) {
-    const span = btn.querySelector("span");
-    span.textContent = parseInt(span.textContent) + 1;
-  }
-
-  document.getElementById("searchInput").addEventListener("input", function () {
-    const value = this.value.toLowerCase();
-    document.querySelectorAll(".item").forEach(item => {
-      item.style.display = item.innerText.toLowerCase().includes(value) ? "" : "none";
-    });
-  });
-
-  document.getElementById("categoryFilter").addEventListener("change", function () {
-    const category = this.value;
-    document.querySelectorAll(".item").forEach(item => {
-      item.style.display = (category === "all" || item.classList.contains(category)) ? "" : "none";
-    });
-  });
-</script></body>
+</body>
 </html>
