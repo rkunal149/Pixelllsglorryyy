@@ -8,38 +8,7 @@
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ffffff, #800000);
-  color: #fff;
-  text-align: center;
-}
 
-.header {
-  padding: 40px 20px;
-}
-
-.logo-container img.rotate3d {
-  width: 200px;
-  animation: spin 8s linear infinite;
-  transform-style: preserve-3d;
-}
-
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
-}
-
-.lottie-section {
-  margin: 40px auto;
-}
-
-footer {
-  background: #2d2d2d;
-  padding: 20px;
-  font-size: 14px;
-}
 
 
   <div class="header">
