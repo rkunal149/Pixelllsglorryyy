@@ -27,6 +27,7 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
     }
     .tags, .search {
       text-align: center;
@@ -91,10 +92,27 @@
       margin: 10px 0;
       padding: 10px;
     }
+    .auth-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      z-index: 999;
+    }
+    .auth-modal input, .auth-modal button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+    }
   </style>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";const firebaseConfig = {
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";const firebaseConfig = {
   apiKey: "AIzaSyCYl48BKBznp56rwGXRfYPK52Q3lZUbdw8",
   authDomain: "glxhub-main.firebaseapp.com",
   projectId: "glxhub-main",
@@ -106,9 +124,43 @@
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+const loginLink = document.getElementById('loginLink');
+const modal = document.getElementById('authModal');
+const loginBtn = document.getElementById('loginBtn');
+const signupBtn = document.getElementById('signupBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+
+loginLink.onclick = () => modal.style.display = 'block';
+
+loginBtn.onclick = () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => modal.style.display = 'none')
+    .catch(err => alert(err.message));
+};
+
+signupBtn.onclick = () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => modal.style.display = 'none')
+    .catch(err => alert(err.message));
+};
+
+logoutBtn.onclick = () => signOut(auth);
+
 onAuthStateChanged(auth, (user) => {
-  if (user && user.email === "meshiv9359@gmail.com") {
-    document.querySelector('.admin-panel').style.display = 'block';
+  if (user) {
+    loginLink.style.display = 'none';
+    logoutBtn.style.display = 'inline-block';
+    if (user.email === "meshiv9359@gmail.com") {
+      document.querySelector('.admin-panel').style.display = 'block';
+    }
+  } else {
+    loginLink.style.display = 'inline-block';
+    logoutBtn.style.display = 'none';
+    document.querySelector('.admin-panel').style.display = 'none';
   }
 });
 
@@ -122,7 +174,8 @@ onAuthStateChanged(auth, (user) => {
     <a href="#">Home</a>
     <a href="#">Popular</a>
     <a href="#">Trending</a>
-    <a href="#">Login</a>
+    <a id="loginLink">Login</a>
+    <button id="logoutBtn" style="display:none;">Logout</button>
   </nav>  <div class="tags">
     <strong>Popular:</strong>
     <button onclick="alert('Background tag clicked')">Background</button>
@@ -143,6 +196,12 @@ onAuthStateChanged(auth, (user) => {
     <input type="text" placeholder="Tag">
     <input type="text" placeholder="Image URL">
     <button>Upload</button>
+  </div>  <div class="auth-modal" id="authModal">
+    <h2>Login / Signup</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+    <button id="signupBtn">Signup</button>
   </div>  <footer>
     <div class="contact">
       📧 Email: meshiv9359@gmail.com<br>
