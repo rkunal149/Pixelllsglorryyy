@@ -269,7 +269,34 @@ onAuthStateChanged(auth, (user) => {
     <button id="loginBtn">Login</button>
     <button id="signupBtn">Signup</button>
   </div>  <footer>
-    <div class="contact">
+    <div class="contact"> 
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GraphiLuxe – Stock Assets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>GraphiLuxe Stock Series</h1>
+
+    <div class="filter">
+      <label for="formatFilter">Filter by format:</label>
+      <select id="formatFilter">
+        <option value="all">All</option>
+        <option value="png">PNG</option>
+        <option value="svg">SVG</option>
+        <option value="jpg">JPG</option>
+      </select>
+    </div>
+
+    <div id="gallery" class="gallery"></div>
+  </div>
+
+  <script s
+
       📧 Email: meshiv9359@gmail.com<br>
       📸 Instagram: @kunal_raut_149<br>
       📍 Maharashtra, India
