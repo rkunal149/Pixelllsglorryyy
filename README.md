@@ -8,7 +8,7 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #121212;
       color: white;
-
+      
 .center-btn {
   text-align: center;
   margin: 40px 0;
